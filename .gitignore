@@ -1,0 +1,11 @@
+*.pyc
+*.log
+*.sqlite3
+
+.idea
+tmp
+media
+
+.#*
+
+/*.jpg

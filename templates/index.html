@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load thumbnail %}
+<meta charset="utf-8">
+<title>Lotien | Страна цветов - Глоксинии и стрептокарпусы почтой</title>
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css">
+<link href="{{ STATIC_URL }}scripts/flexslider/flexslider.css" rel="stylesheet" type="text/css">
+
+<script src="{{ STATIC_URL }}scripts/jquery-1.11.0.min.js"></script>
+<script src="{{ STATIC_URL }}scripts/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ STATIC_URL }}scripts/imagelightbox.min.js"></script>
+<script src="{{ STATIC_URL }}scripts/functions.js"></script>
+<script src="{{ STATIC_URL }}scripts/form.js"></script>
+<script src="{{ STATIC_URL }}scripts/scroll.js"></script>
+
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(52.2542819,104.2361891);
+    var map_options = {
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: myLatlng,
+      scrollwheel: false,
+      disableDefaultUI: true
+    };
+
+    var map = new google.maps.Map(document.getElementById('map_canvas'), map_options)
+    var image = '{{ STATIC_URL }}images_lavender/icon-google-maps-marker.png';
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: image
+    });
+
+    map.panBy(-200,0);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<!-- Google Map Ends! -->
+
+</head>
+<body>
+
+<div class="main">
+
+  <!-- Header -->
+  <div class="header" id="header">
+    <div class="container">
+
+      <!-- Menu -->
+      <div class="menu">
+
+        <div class="menu_container">
+          <ul class="items">
+            <li><a href="#about" title="about us">коллекции</a></li>
+            <li><a href="#portfolio" title="portfolio">начинающим</a></li>
+            <li><a href="#services" title="our services">доставка</a></li>
+            <li><a href="#contact" title="contact us">наши друзья</a></li>
+            <li><a href="#contact" title="contact us">о нас</a></li>
+          </ul>
+
+          <!-- Social Links -->
+          <ul class="social">
+            <li><a href="" class="facebook">facebook</a></li>
+          </ul>
+          <!-- Social Links Ends! -->
+        </div>
+
+      </div>
+       <!-- Menu Ends -->
+
+      <h1><a href="index.html">Lotien <span>страна цветов</span></a></h1>
+
+    </div>
+  </div>
+  <!-- Header Ends! -->
+
+  <!-- Page Content -->
+  <div class="page">
+    <div class="container">
+
+      <!-- Slider -->
+      <div class="promo">
+
+        <div class="flexslider">
+          <ul class="slides">
+            {% for img in slider_photos %}
+              <li><img src="{% thumbnail img.image 960x445 crop upscale %}" alt="" /></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+      <!-- Slider Ends! -->
+
+      <!-- Abstract -->
+      <div class="abstract">
+        <a class="anchor" id="about"></a>
+        <p>
+            Мы не только коллекционируем редкие сортовые комнатные цветы, но и выращиваем качественный посадочный
+            материал, который умеем надёжно упаковывать и отправлять по всей России.
+        </p>
+      </div>
+      <!-- Abstract Ends! -->
+
+      <!-- Featured Products -->
+      <div class="products">
+
+        <!-- Product -->
+        <div class="product">
+          <div>
+            <img src="{{ STATIC_URL }}images_lavender/thumbnail-1.jpg" alt="thumbnail-1.jpg">
+            <a href="{{ STATIC_URL }}images_lavender/full-1.jpg"></a>
+          </div>
+          <h3>Popsicles</h3>
+          <p>Maecenas vulputate nulla ut turpis scelerisque luctus. Nulla rutrum dolor eget nisl mollis, a lacinia purus dapibus.</p>
+        </div>
+        <!-- Product Ends! -->
+
+        <!-- Product -->
+        <div class="product">
+          <div>
+            <img src="{{ STATIC_URL }}images_lavender/thumbnail-2.jpg" alt="thumbnail-2.jpg">
+            <a href="{{ STATIC_URL }}images_lavender/full-2.jpg"></a>
+          </div>
+          <h3>French Macarons</h3>
+          <p>Etiam sollicitudin erat eu volutpat placerat. Nam vel faucibus augue. Nunc nisi metus, faucibus quis nibh quis, dignissim feugiat risus.</p>
+        </div>
+        <!-- Product Ends! -->
+
+        <!-- Product -->
+        <div class="product">
+          <div>
+            <img src="{{ STATIC_URL }}images_lavender/thumbnail-3.jpg" alt="thumbnail-3.jpg">
+            <a href="{{ STATIC_URL }}images_lavender/full-3.jpg"></a>
+          </div>
+          <h3>Pretty in pink cupcakes</h3>
+          <p>Praesent quis hendrerit lacus, nec pretium nunc. Donec turpis ante, imperdiet et tristique et, consectetur in urna.</p>
+        </div>
+        <!-- Product Ends! -->
+
+      </div>
+      <!-- Featured Products Ends! -->
+
+      <!-- Services -->
+      <div class="services">
+        <a class="anchor" id="services"></a>
+
+        <h2>Наши коллекции</h2>
+        <p class="description">
+            На нашем сайте вы можете полюбоваться цветочным великолепием и выписать понравившиеся сорта. Мы отправляем
+            крепкие детки стрептокарпусов, и клубни либо крепкие детки глоксиний (семена и листовые черенки мы не высылаем).
+        </p>
+
+        <div class="service">
+          <h3>Гарантия</h3>
+          <p>
+              Растения отправляются с гарантией их сохранности, в случае повреждения или гибели растений по вине почты,
+              мы компенсируем потери.
+          </p>
+        </div>
+
+        <div class="event">
+          <h3>Все расскажем</h3>
+          <ul>
+            <li><a href="">Как обращаться с растением?</a></li>
+            <li><a href="">Что такое стрептокарпусы?</a></li>
+            <li><a href="">Что такое глоксинии?</a></li>
+          </ul>
+        </div>
+
+        <div class="delivery">
+          <h3>Особенная упаковка</h3>
+          <p>
+              Мы специально упаковываем наши растения, чтобы свести к минимуму вероятность их повреждения при пересылке.
+          </p>
+        </div>
+      </div>
+      <!-- Services Ends! -->
+
+      <!-- Portfolio -->
+      <div class="portfolio">
+        <a class="anchor" id="portfolio"></a>
+
+        <h2>Каталог</h2>
+
+        <!-- Portfolio List -->
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-4.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="birthdays"><span>Стрептокарпусы<br/> зарубежной и отечественной селекции</span></a>
+        </div>
+
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-5.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="weddings"><span>Стрептокарпусы<br/> селекции <br/>Павла Еникеева<br/> (DS)</span></a>
+        </div>
+
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-6.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="showers"><span>Стрептокарпусы<br/> селекции <br/>Петра Клещыньски</span></a>
+        </div>
+
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-4.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="parties"><span>Стрептокарпусы<br/> селекции <br/>Н.П. Павлюк</span></a>
+        </div>
+
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-5.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="corporate "><span>Стрептокарпусы<br/> моей селекции<br/> (Инна Шишкина)</span></a>
+        </div>
+
+        <div class="item">
+          <img src="{{ STATIC_URL }}images_lavender/thumbnail-6.jpg" alt="-temp-placeholder-thumb">
+          <a href="" data-group="celebrations"><span>Глоксинии<br/>(только махровые)</span></a>
+        </div>
+        <!-- Portfolio List Ends! -->
+
+        <p class="description">
+            <a href="">Скачать каталог целиком</a>
+        </p>
+
+      </div>
+      <!-- Portfolio Ends! -->
+
+      <!-- Team -->
+      <div class="team">
+        <h2>О нас</h2>
+
+        <!-- Member -->
+        <div>
+          <img src="{{ STATIC_URL }}images_lavender/team-member-2.png" alt="team-member-name2">
+          <h3>Инна Шишкина (Ильина)</h3>
+          <p><em>Favorite dessert <span>anything chocolate</span></em></p>
+          <p><strong>delicious chef</strong></p>
+          <ul>
+            <li><a href="" class="google">google+</a></li>
+            <li><a href="" class="linkedin">linkedin</a></li>
+            <li><a href="" class="twitter">twitter</a></li>
+            <li><a href="" class="facebook">facebook</a></li>
+            <li><a href="" class="pinterest">pinterest</a></li>
+            <li><a href="" class="instagram">instagram</a></li>
+          </ul>
+        </div>
+        <!-- Member Ends! -->
+
+        <!-- Member -->
+        <div>
+          <img src="{{ STATIC_URL }}images_lavender/team-member-3.png" alt="team-member-name3">
+          <h3>Надежда Шишкина</h3>
+          <p><em>Favorite dessert <span>chocolate cookies</span></em></p>
+          <p><strong>food stylist</strong></p>
+          <ul>
+            <li><a href="" class="google">google+</a></li>
+            <li><a href="" class="linkedin">linkedin</a></li>
+            <li><a href="" class="twitter">twitter</a></li>
+            <li><a href="" class="facebook">facebook</a></li>
+            <li><a href="" class="instagram">instagram</a></li>
+          </ul>
+        </div>
+        <!-- Member Ends! -->
+
+      </div>
+      <!-- Team Ends! -->
+
+      <!-- Map -->
+      <div class="map">
+        <div id="map_canvas"></div>
+
+        <div class="address">
+          <div>
+            <h3>Наш адрес</h3>
+            <h4>Коллекционер сортовых комнатных цветов И.Ю.Шишкина. Стрептокарпусы и глоксинии</h4>
+            <p>
+              г. Иркутск, мкр Первомайский, д. 55
+              <br><strong>+7 (924) 601-49-30</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Map Ends! -->
+
+      <!-- Contact -->
+      <div class="contact">
+        <a class="anchor" id="contact"></a>
+
+        <!-- Contact Form -->
+        <div class="form">
+          <form action="contact.php" method="post">
+            <input type="text" name="name" placeholder="ваше имя"/>
+            <input type="text" name="email" placeholder="ваш email"/>
+            <textarea name="message" placeholder="ваш вопрос"></textarea>
+
+            <button name="submit" type="submit">отправить</button>
+          </form>
+        </div>
+        <!-- Contact Form Ends! -->
+
+        <!-- More -->
+        <div class="more">
+          <h4>
+              Я отвечаю всем, кто здоровается, вне зависимости от того собирается ли человек приобретать наши растения.
+          </h4>
+        </div>
+        <!-- More Ends! -->
+
+      </div>
+      <!-- Contact Ends! -->
+
+    </div>
+  </div>
+  <!-- Page Ends! -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <p>Copyright &copy;2014 <a href="index.html">Инна Шишкина</a></p>
+    </div>
+  </div>
+  <!-- Footer Ends! -->
+
+</div>
+
+</body>
+</html>
