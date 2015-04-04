@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'easy_thumbnails',
+    'storages',
 
     'lotien',
     'shop',
@@ -127,4 +128,16 @@ if os.environ.get('DATABASE_URL'):
     # Static asset configuration
     STATIC_ROOT = 'staticfiles'
     STATIC_URL = '/static/'
+
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_QUERYSTRING_AUTH = False
+    AWS_S3_SECURE_URLS = False
+    AWS_QUERYSTRING_EXPIRE = 10
+
+    MEDIA_URL = 'http://%s.s3.amazonaws.com/uploads/' % AWS_STORAGE_BUCKET_NAME
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
