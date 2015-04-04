@@ -25,8 +25,6 @@ SECRET_KEY = '1gc4y%b=ak9@ev1l98269st_=2iotd(_itm-4r=ejc)^j-7*j_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -112,3 +110,21 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = './media/'
 MEDIA_URL = '/media/'
+
+if os.environ.get('DATABASE_URL'):
+    # We're on Heroku, baby!
+    DEBUG = False
+
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    # Allow all host headers
+    ALLOWED_HOSTS = ['*']
+
+    # Static asset configuration
+    STATIC_ROOT = 'staticfiles'
+    STATIC_URL = '/static/'
+

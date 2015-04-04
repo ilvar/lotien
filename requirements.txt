@@ -1,4 +1,9 @@
 Django==1.8
 Pillow==2.8.1
+dj-database-url==0.3.0
+dj-static==0.0.6
+django-toolbelt==0.0.1
 easy-thumbnails==2.2
-gunicorn
+gunicorn==19.3.0
+psycopg2==2.6
+static3==0.5.1
