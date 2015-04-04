@@ -92,7 +92,7 @@
         <div class="flexslider">
           <ul class="slides">
             {% for img in slider_photos %}
-              <li><img src="{{ img.image }}" alt="" /></li>
+              <li><img src="{{ img.image.url }}" alt="" /></li>
             {% endfor %}
           </ul>
         </div>
