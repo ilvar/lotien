@@ -113,7 +113,7 @@ MEDIA_URL = '/media/'
 
 if os.environ.get('DATABASE_URL'):
     # We're on Heroku, baby!
-    DEBUG = False
+    # DEBUG = False
 
     import dj_database_url
     DATABASES['default'] = dj_database_url.config()
