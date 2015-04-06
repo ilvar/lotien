@@ -46,6 +46,7 @@ class Command(BaseCommand):
                     f = urllib.urlopen(img_url)
                     io = StringIO.StringIO()
                     im = Image.open(f)
+                    im = im.convert('RGB')
                     im.save(io, "JPEG")
 
                     flower.photo.save(fname + '.jpg', ContentFile(io.getvalue()))
