@@ -29,11 +29,15 @@ class Command(BaseCommand):
                         name=i['title'],
                     )
                 except Flower.DoesNotExist:
+                    try:
+                        price = [int(s) for s in i['price'].split() if s.isdigit()][0]
+                    except IndexError:
+                        price = 0
                     flower = Flower(
                         collection=collection,
                         name=i['title'],
                         description=i['description'],
-                        price=[int(s) for s in i['price'].split() if s.isdigit()][0],
+                        price=price,
                         baby=u'детка' in i['price'].lower(),
                     )
 
