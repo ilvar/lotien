@@ -2,6 +2,7 @@
 from django.db import models
 
 from easy_thumbnails.fields import ThumbnailerImageField
+from utils import thumbnail_storage
 
 
 class Collection(models.Model):
@@ -18,7 +19,7 @@ class Flower(models.Model):
     description = models.TextField(u'Описание')
     price = models.PositiveIntegerField(u'Цена')
     baby = models.BooleanField(u'Детка', blank=True, default=False)
-    photo = ThumbnailerImageField(u'Фото')
+    photo = ThumbnailerImageField(u'Фото', thumbnail_storage=thumbnail_storage)
 
     class Meta:
         verbose_name = u'Цветок'

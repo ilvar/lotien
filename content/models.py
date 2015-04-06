@@ -9,11 +9,13 @@ from django.db import models
 from django.core.files.base import ContentFile
 
 from easy_thumbnails.fields import ThumbnailerImageField
+from utils import thumbnail_storage
 
 
 class SliderImage(models.Model):
     image = ThumbnailerImageField(u'Файл фото', help_text=u'Необходим, если не указан URL', blank=True,
-                                  resize_source=dict(size=(960, 445), crop="smart", upscale=True))
+                                  resize_source=dict(size=(960, 445), crop="smart", upscale=True),
+                                  thumbnail_storage=thumbnail_storage)
     image_url = models.CharField(u'URL фото', max_length=255)
 
     class Meta:

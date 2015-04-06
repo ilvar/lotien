@@ -52,6 +52,6 @@ class Command(BaseCommand):
 
                     flower.photo.save(fname + '.jpg', ContentFile(io.getvalue()))
 
-                easy_thumbnails.files.generate_all_aliases(flower.photo)
+                easy_thumbnails.files.generate_all_aliases(flower.photo, False)
 
                 print 'Finished', i['title']
