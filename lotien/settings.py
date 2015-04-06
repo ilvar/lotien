@@ -109,8 +109,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = './media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+THUMBNAIL_ALIASES = {
+    'shop.Flower.photo': {
+        'thumb': {'size': (220, 220), 'crop': True}
+    },
+}
 
 if os.environ.get('DATABASE_URL'):
     # We're on Heroku, baby!

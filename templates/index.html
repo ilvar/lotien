@@ -59,11 +59,12 @@
 
         <div class="menu_container">
           <ul class="items">
-            <li><a href="#about" title="about us">коллекции</a></li>
-            <li><a href="#portfolio" title="portfolio">начинающим</a></li>
-            <li><a href="#services" title="our services">доставка</a></li>
-            <li><a href="#contact" title="contact us">наши друзья</a></li>
-            <li><a href="#contact" title="contact us">о нас</a></li>
+            <li><a href="#collections" title="about us">СТРЕПТОКАРПУСЫ</a></li>
+            <li><a href="#collections" title="about us">ГЛОКСИНИИ</a></li>
+            <li><a href="#portfolio" title="portfolio">НАЧИНАЮЩИМ</a></li>
+            <li><a href="#services" title="our services">ДОСТАВКА</a></li>
+            <li><a href="#contact" title="contact us">НАШИ ДРУЗЬЯ</a></li>
+            <li><a href="#contact" title="contact us">О НАС</a></li>
           </ul>
 
           <!-- Social Links -->
@@ -102,7 +103,6 @@
 
       <!-- Abstract -->
       <div class="abstract">
-        <a class="anchor" id="about"></a>
         <p>
             Мы не только коллекционируем редкие сортовые комнатные цветы, но и выращиваем качественный посадочный
             материал, который умеем надёжно упаковывать и отправлять по всей России.
@@ -110,55 +110,8 @@
       </div>
       <!-- Abstract Ends! -->
 
-      <!-- Featured Products -->
-      <div class="products">
-
-        <!-- Product -->
-        <div class="product">
-          <div>
-            <img src="{{ STATIC_URL }}images_lavender/thumbnail-1.jpg" alt="thumbnail-1.jpg">
-            <a href="{{ STATIC_URL }}images_lavender/full-1.jpg"></a>
-          </div>
-          <h3>Popsicles</h3>
-          <p>Maecenas vulputate nulla ut turpis scelerisque luctus. Nulla rutrum dolor eget nisl mollis, a lacinia purus dapibus.</p>
-        </div>
-        <!-- Product Ends! -->
-
-        <!-- Product -->
-        <div class="product">
-          <div>
-            <img src="{{ STATIC_URL }}images_lavender/thumbnail-2.jpg" alt="thumbnail-2.jpg">
-            <a href="{{ STATIC_URL }}images_lavender/full-2.jpg"></a>
-          </div>
-          <h3>French Macarons</h3>
-          <p>Etiam sollicitudin erat eu volutpat placerat. Nam vel faucibus augue. Nunc nisi metus, faucibus quis nibh quis, dignissim feugiat risus.</p>
-        </div>
-        <!-- Product Ends! -->
-
-        <!-- Product -->
-        <div class="product">
-          <div>
-            <img src="{{ STATIC_URL }}images_lavender/thumbnail-3.jpg" alt="thumbnail-3.jpg">
-            <a href="{{ STATIC_URL }}images_lavender/full-3.jpg"></a>
-          </div>
-          <h3>Pretty in pink cupcakes</h3>
-          <p>Praesent quis hendrerit lacus, nec pretium nunc. Donec turpis ante, imperdiet et tristique et, consectetur in urna.</p>
-        </div>
-        <!-- Product Ends! -->
-
-      </div>
-      <!-- Featured Products Ends! -->
-
       <!-- Services -->
       <div class="services">
-        <a class="anchor" id="services"></a>
-
-        <h2>Наши коллекции</h2>
-        <p class="description">
-            На нашем сайте вы можете полюбоваться цветочным великолепием и выписать понравившиеся сорта. Мы отправляем
-            крепкие детки стрептокарпусов, и клубни либо крепкие детки глоксиний (семена и листовые черенки мы не высылаем).
-        </p>
-
         <div class="service">
           <h3>Гарантия</h3>
           <p>
@@ -182,49 +135,53 @@
               Мы специально упаковываем наши растения, чтобы свести к минимуму вероятность их повреждения при пересылке.
           </p>
         </div>
+
+        <p class="description">
+            На нашем сайте вы можете полюбоваться цветочным великолепием и выписать понравившиеся сорта. Мы отправляем
+            крепкие детки стрептокарпусов, и клубни либо крепкие детки глоксиний (семена и листовые черенки мы не высылаем).
+        </p>
+
       </div>
       <!-- Services Ends! -->
 
+      <!-- Featured Products -->
+      <div class="products">
+
+        <h2>Наши цветы</h2>
+
+        {% for f in flowers %}
+          <!-- Product -->
+          <div class="product">
+            <div>
+              <img src="{{ f.photo.thumb.url }}" alt="{{ f.name }}">
+              <a href="#"></a>
+            </div>
+            <h3>{{ f.name }}</h3>
+            <p>{{ f.description|truncatewords:10 }}</p>
+          </div>
+          <!-- Product Ends! -->
+        {% endfor %}
+
+      </div>
+      <!-- Featured Products Ends! -->
+
       <!-- Portfolio -->
       <div class="portfolio">
-        <a class="anchor" id="portfolio"></a>
+        <a class="anchor" name="collections"></a>
+        <h2>Коллекции</h2>
 
-        <h2>Каталог</h2>
-
-        <!-- Portfolio List -->
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-4.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="birthdays"><span>Стрептокарпусы<br/> зарубежной и отечественной селекции</span></a>
-        </div>
-
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-5.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="weddings"><span>Стрептокарпусы<br/> селекции <br/>Павла Еникеева<br/> (DS)</span></a>
-        </div>
-
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-6.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="showers"><span>Стрептокарпусы<br/> селекции <br/>Петра Клещыньски</span></a>
-        </div>
-
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-4.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="parties"><span>Стрептокарпусы<br/> селекции <br/>Н.П. Павлюк</span></a>
-        </div>
-
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-5.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="corporate "><span>Стрептокарпусы<br/> моей селекции<br/> (Инна Шишкина)</span></a>
-        </div>
-
-        <div class="item">
-          <img src="{{ STATIC_URL }}images_lavender/thumbnail-6.jpg" alt="-temp-placeholder-thumb">
-          <a href="" data-group="celebrations"><span>Глоксинии<br/>(только махровые)</span></a>
-        </div>
-        <!-- Portfolio List Ends! -->
+        {% for c in collections %}
+          <!-- Portfolio List -->
+          <div class="item">
+            <img src="{{ STATIC_URL }}images_lavender/thumbnail-4.jpg" alt="-temp-placeholder-thumb">
+            <a href="" data-group="birthdays"><span>Стрептокарпусы<br/> зарубежной и отечественной селекции</span></a>
+          </div>
+        {% endfor %}
 
         <p class="description">
-            <a href="">Скачать каталог целиком</a>
+            <a href="https://docs.google.com/document/d/1M9Yr_fEjdF9yQhA0CvHx3HWxv3yG40vCd5oN-lU5Qkw/edit">
+                Скачать каталог целиком
+            </a>
         </p>
 
       </div>
@@ -289,8 +246,6 @@
 
       <!-- Contact -->
       <div class="contact">
-        <a class="anchor" id="contact"></a>
-
         <!-- Contact Form -->
         <div class="form">
           <form action="contact.php" method="post">
@@ -306,7 +261,7 @@
         <!-- More -->
         <div class="more">
           <h4>
-              Я отвечаю всем, кто здоровается, вне зависимости от того собирается ли человек приобретать наши растения.
+              Я отвечаю всем, кто здоровается, вне зависимости от того, собирается ли человек приобретать наши растения.
           </h4>
         </div>
         <!-- More Ends! -->
