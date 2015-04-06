@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1 class="top">{{ collection.name }}</h1>
+
+  <!-- Featured Products -->
+  <div class="products">
+    {% for f in flowers %}
+      <!-- Product -->
+      <div class="product">
+        <div>
+          <img src="{{ f.photo.thumb.url }}" alt="{{ f.name }}">
+          <a href="{% url 'flower' f.collection_id f.pk %}"></a>
+        </div>
+        <h3>{{ f.name }}</h3>
+        <p>{{ f.description }}</p>
+      </div>
+      <!-- Product Ends! -->
+
+      {% if forloop.counter|divisibleby:3 %}
+        <div class="clearboth"></div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+  <!-- Featured Products Ends! -->
+{% endblock body %}

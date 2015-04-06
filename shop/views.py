@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView
 
 from content.models import SliderImage
 from shop.models import Flower, Collection
@@ -16,5 +17,31 @@ class HomeView(TemplateView):
         )
         return data
 
-
 home = HomeView.as_view()
+
+
+class CollectionView(ListView):
+    template_name = 'collection.html'
+    context_object_name = 'flowers'
+
+    def get_queryset(self):
+        return Flower.objects.filter(collection__pk=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        data = super(CollectionView, self).get_context_data(**kwargs)
+        data.update(
+            collection=get_object_or_404(Collection, pk=self.kwargs['pk'])
+        )
+        return data
+
+collection = CollectionView.as_view()
+
+
+class FlowerView(DetailView):
+    template_name = 'flower.html'
+    context_object_name = 'flower'
+
+    def get_queryset(self):
+        return Flower.objects.filter(collection__pk=self.kwargs['collection_pk'])
+
+flower = FlowerView.as_view()

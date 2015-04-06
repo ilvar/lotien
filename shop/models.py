@@ -27,3 +27,13 @@ class Flower(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @property
+    def short_description(self):
+        words = self.description.split()[:10]
+        while len(words) and len(words[-1]) < 4:
+            words = words[:-1]
+        if not words:
+            words = self.description.split()[:10]
+        return ' '.join(words)
+

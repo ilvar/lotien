@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lotien | Страна цветов - Глоксинии и стрептокарпусы почтой</title>
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css">
+<link href="{{ STATIC_URL }}scripts/flexslider/flexslider.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<script src="{{ STATIC_URL }}scripts/jquery-1.11.0.min.js"></script>
+<script src="{{ STATIC_URL }}scripts/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ STATIC_URL }}scripts/imagelightbox.min.js"></script>
+<script src="{{ STATIC_URL }}scripts/functions.js"></script>
+<script src="{{ STATIC_URL }}scripts/form.js"></script>
+<script src="{{ STATIC_URL }}scripts/scroll.js"></script>
+
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(52.2542819,104.2361891);
+    var map_options = {
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: myLatlng,
+      scrollwheel: false,
+      disableDefaultUI: true
+    };
+
+    var map = new google.maps.Map(document.getElementById('map_canvas'), map_options)
+    var image = '{{ STATIC_URL }}images_lavender/icon-google-maps-marker.png';
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: image
+    });
+
+    map.panBy(-200,0);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<!-- Google Map Ends! -->
+
+</head>
+<body>
+
+<div class="main">
+
+  <!-- Header -->
+  <div class="header" id="header">
+    <div class="container">
+
+      <!-- Menu -->
+      <div class="menu">
+
+        <div class="menu_container">
+          <ul class="items">
+            <li><a href="/#collections" title="about us">СТРЕПТОКАРПУСЫ</a></li>
+            <li><a href="/#collections" title="about us">ГЛОКСИНИИ</a></li>
+            <li><a href="#portfolio" title="portfolio">НАЧИНАЮЩИМ</a></li>
+            <li><a href="#services" title="our services">ДОСТАВКА</a></li>
+            <li><a href="#contact" title="contact us">НАШИ ДРУЗЬЯ</a></li>
+            <li><a href="#contact" title="contact us">О НАС</a></li>
+          </ul>
+
+          <!-- Social Links -->
+          <ul class="social">
+            <li><a href="" class="facebook">facebook</a></li>
+          </ul>
+          <!-- Social Links Ends! -->
+        </div>
+
+      </div>
+       <!-- Menu Ends -->
+
+      <h1><a href="/">Lotien <span>страна цветов</span></a></h1>
+
+    </div>
+  </div>
+  <!-- Header Ends! -->
+
+  <!-- Page Content -->
+  <div class="page">
+    <div class="container">
+{% block body %}
+{% endblock body %}
+      <!-- Contact -->
+      <div class="contact">
+        <!-- Contact Form -->
+        <div class="form">
+          <form action="contact.php" method="post">
+            <input type="text" name="name" placeholder="ваше имя"/>
+            <input type="text" name="email" placeholder="ваш email"/>
+            <textarea name="message" placeholder="ваш вопрос"></textarea>
+
+            <button name="submit" type="submit">отправить</button>
+          </form>
+        </div>
+        <!-- Contact Form Ends! -->
+
+        <!-- More -->
+        <div class="more">
+          <h4>
+              Я отвечаю всем, кто здоровается, вне зависимости от того, собирается ли человек приобретать наши растения.
+          </h4>
+        </div>
+        <!-- More Ends! -->
+
+      </div>
+      <!-- Contact Ends! -->
+
+    </div>
+  </div>
+  <!-- Page Ends! -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <p>Copyright &copy;2014 <a href="index.html">Инна Шишкина</a></p>
+    </div>
+  </div>
+  <!-- Footer Ends! -->
+
+</div>
+
+</body>
+</html>

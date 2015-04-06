@@ -451,6 +451,9 @@ a {
       .page .products .product div, .page .products .product div a {
         width: 220px;
         height: 220px; }
+      .page .products .product p {
+        padding-bottom: 1em;
+      }
       .page .products .product div {
         position: relative;
         margin-bottom: 15px; }
@@ -715,25 +718,25 @@ a {
     color: #f7f8fa;
     font-size: 14px;
     padding: 30px 0; }
-    .page .contact .form {
+    .page .form {
       float: left;
       margin-left: 10%;
       width: 40%; }
       @media all and (max-width: 600px) {
-        .page .contact .form {
+        .page .form {
           width: 80%;
           float: none;
           margin: 0 auto 40px; } }
-      .page .contact .form p, .page .contact .form input, .page .contact .form textarea, .page .contact .form button {
+      .page .form p, .page .form input, .page .form textarea, .page .form button {
         margin: 0 1.5625%; }
-      .page .contact .form p {
+      .page .form p {
         font-size: 21px;
         font-style: italic;
         margin-bottom: 26px; }
-      .page .contact .form input, .page .contact .form textarea {
+      .page .form input, .page .form textarea {
         margin-bottom: 16px;
         padding: 15px 20px; }
-      .page .contact .form input, .page .contact .form textarea, .page .contact .form button {
+      .page .form input, .page .form textarea, .page .form button {
         border: none;
         font-style: italic;
         font-family: "Philosopher", serif;
@@ -749,9 +752,9 @@ a {
         -webkit-border-radius: 6px;
         border-radius: 6px;
         background-clip: padding-box; }
-      .page .contact .form input, .page .contact .form button {
+      .page .form input, .page .form button {
         height: 50px; }
-      .page .contact .form input {
+      .page .form input {
         width: 46.875%;
         float: left;
         padding-left: 40px;
@@ -759,27 +762,27 @@ a {
         background-image: url(images_lavender/icons-sprite.png);
         background-repeat: no-repeat; }
         @media all and (max-width: 320px) {
-          .page .contact .form input {
+          .page .form input {
             width: 96.875%;
             float: none; } }
-        .page .contact .form input[name="email"] {
+        .page .form input[name="email"] {
           background-position: 10px -157px; }
-          .page .contact .form input[name="email"].error {
+          .page .form input[name="email"].error {
             background-position: 10px -214px; }
-        .page .contact .form input[name="name"] {
+        .page .form input[name="name"] {
           background-position: 10px -266px; }
-          .page .contact .form input[name="name"].error {
+          .page .form input[name="name"].error {
             background-position: 10px -323px; }
-        .page .contact .form input.error {
+        .page .form input.error {
           background-color: #e3e0f3; }
-      .page .contact .form textarea {
+      .page .form textarea {
         height: 148px;
         width: 96.875%;
         resize: none;
         background: #f7f8fa; }
-        .page .contact .form textarea.error {
+        .page .form textarea.error {
           background-color: #e3e0f3; }
-      .page .contact .form button {
+      .page .form button {
         background: #c3da82;
         color: #8563b7;
         font-size: 22px;
@@ -792,7 +795,7 @@ a {
         -moz-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out; }
-        .page .contact .form button:hover {
+        .page .form button:hover {
           background: #b5d335; }
     .page .contact .more {
       float: right;
@@ -841,3 +844,49 @@ a {
   position: relative;
   top: -216px;
   visibility: hidden; }
+
+h1.top {
+  padding: 160px 0 20px;
+  text-align: center;
+}
+
+.clearboth {
+  clear: both;
+}
+
+.page .flower {
+  min-height: 600px;
+  background-size: cover;
+}
+
+.page .flower .price_tag {
+  top: -40px;
+  left: -75px;
+  background: none;
+}
+
+.page .flower .price_tag h2 {
+  padding: 1em 0 0.5em;
+}
+
+.page .flower .price_tag h3 {
+  line-height: 75px;
+  font-family: Tahoma, Verdana, Geneva, sans-serif ;
+  font-style: normal !important;
+  font-weight: bold;
+}
+
+.page .flower .price_tag h3 small {
+  color: lavender;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.page .flower .price_tag p {
+  padding: 0 10px 20px;
+}
+
+.page .flower .price_tag .form {
+  width: 309px;
+  text-align: center;
+}
