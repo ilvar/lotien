@@ -891,6 +891,6 @@ h1.top {
   text-align: center;
 }
 
-.page .portfolio .item {
+.page .portfolio .item a {
   padding: 0 10px;
 }
