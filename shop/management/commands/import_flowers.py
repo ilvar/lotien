@@ -7,6 +7,7 @@ from PIL import Image
 from django.core.exceptions import MultipleObjectsReturned
 from django.core.files.base import ContentFile
 from django.core.management import BaseCommand
+import easy_thumbnails
 import os
 
 from shop.models import Collection, Flower
@@ -24,7 +25,7 @@ class Command(BaseCommand):
             collection, _ = Collection.objects.get_or_create(name=collection_name)
             for i in d['data']['items']:
                 try:
-                    Flower.objects.get(
+                    flower = Flower.objects.get(
                         collection=collection,
                         name=i['title'],
                     )
@@ -50,5 +51,7 @@ class Command(BaseCommand):
                     im.save(io, "JPEG")
 
                     flower.photo.save(fname + '.jpg', ContentFile(io.getvalue()))
+
+                easy_thumbnails.files.generate_all_aliases(flower.photo)
 
                 print 'Finished', i['title']
