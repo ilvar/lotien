@@ -156,3 +156,5 @@ if os.environ.get('DATABASE_URL'):
     EMAIL_SUBJECT_PREFIX = u'[Lotien.ru]'
     EMAIL_USE_TLS = True
 
+    DEFAULT_FROM_EMAIL = 'robot@lotien.ru'
+
