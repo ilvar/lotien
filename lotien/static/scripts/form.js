@@ -4,7 +4,7 @@ $(document).ready(function() {
 // Contact Form
 var request;
 
-$('form').submit(function(event) {
+$('.form').submit(function(event) {
 
   $('input[name="name"], input[name="email"], textarea').removeClass('error');
 

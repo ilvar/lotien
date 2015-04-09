@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1 class="top">Ваш заказ</h1>
+  <table class="table table-striped table-bordered cart">
+    <tr>
+      <th>Цветок</th>
+      <th>Кол-во</th>
+      <th>Цена</th>
+    </tr>
+    {% for f in order %}
+      <tr>
+        <td>
+            <a href="{% url 'flower' f.flower.collection_id f.flower.pk %}">{{ f.flower }}</a>
+            ({{ f.flower.collection.name }})
+        </td>
+        <td>{{ f.count }}</td>
+        <td>{{ f.flower.price }}</td>
+      </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="2">Итого</td>
+      <td>{{ total }}</td>
+    </tr>
+  </table>
+  <form class="cart-form" action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="idName">Ваше имя</label>
+      <input type="text" class="form-control" id="idName" name="name" placeholder="ваше имя" required="1">
+    </div>
+    <div class="form-group">
+      <label for="idEmail">Ваш email</label>
+      <input type="email" class="form-control" id="idEmail" name="email" placeholder="ваш email" required="1">
+    </div>
+    <div class="form-group">
+      <label for="idPhone">Ваш телефон</label>
+      <input type="tel" class="form-control" id="idPhone" name="phone" placeholder="ваш телефон" required="1">
+    </div>
+    <button name="submit" type="submit" value="1">отправить заказ</button>
+  </form>
+{% endblock body %}

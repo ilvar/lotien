@@ -236,6 +236,8 @@ a {
         font-size: 24px;
         width: auto; } }
     .header h1 a {
+      box-sizing: content-box;
+      -webkit-box-sizing: content-box;
       width: 304px;
       height: 136px;
       padding: 20px 45px 0;
@@ -736,7 +738,7 @@ a {
       .page .form input, .page .form textarea {
         margin-bottom: 16px;
         padding: 15px 20px; }
-      .page .form input, .page .form textarea, .page .form button {
+      .page .form input, .page .form textarea, .page .form button, .page form button {
         border: none;
         font-style: italic;
         font-family: "Philosopher", serif;
@@ -752,7 +754,7 @@ a {
         -webkit-border-radius: 6px;
         border-radius: 6px;
         background-clip: padding-box; }
-      .page .form input, .page .form button {
+      .page .form input, .page .form button, .page form button {
         height: 50px; }
       .page .form input {
         width: 46.875%;
@@ -782,7 +784,7 @@ a {
         background: #f7f8fa; }
         .page .form textarea.error {
           background-color: #e3e0f3; }
-      .page .form button {
+      .page .form button, .page form button {
         background: #c3da82;
         color: #8563b7;
         font-size: 22px;
@@ -800,7 +802,7 @@ a {
     .page .contact .more {
       float: right;
       margin-right: 10%;
-      width: 26.3542%; }
+      width: 35%; }
       @media all and (max-width: 600px) {
         .page .contact .more {
           width: 80%;
@@ -831,6 +833,10 @@ a {
         padding-left: 24px;
         margin-bottom: 5px; }
 
+.container {
+  padding: 0;
+  margin: 0 auto;
+}
 .footer .container {
   padding: 34px 0;
   background: #f7f8fa url(images_lavender/pink-wave-pattern.png) center top repeat-x;
@@ -845,7 +851,7 @@ a {
   top: -216px;
   visibility: hidden; }
 
-h1.top {
+.top {
   padding: 160px 0 20px;
   text-align: center;
 }
@@ -859,6 +865,10 @@ h1.top {
   background-size: cover;
 }
 
+.page h1 small {
+  font-size: 18px;
+}
+
 .page .flower .price_tag {
   top: -40px;
   left: -75px;
@@ -866,7 +876,7 @@ h1.top {
 }
 
 .page .flower .price_tag h2 {
-  padding: 1em 0 0.5em;
+  padding: 1em 0 1em;
 }
 
 .page .flower .price_tag h3 {
@@ -886,11 +896,47 @@ h1.top {
   padding: 0 10px 20px;
 }
 
-.page .flower .price_tag .form {
-  width: 309px;
+.page .flower .price_tag form {
+  width: 80%;
   text-align: center;
+  margin: 0 auto;
 }
 
 .page .portfolio .item a span {
   padding: 0 26px;
+}
+
+.page .flower-description {
+  font-size: 18px;
+  padding: 1em 0.5em;
+}
+
+.cart {
+  margin: 0 auto 1em;
+  width: 96%
+}
+
+.cart tr td:first-child {
+  width: 80%;
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.cart-form {
+  margin: 0 0 1em 2%;
+}
+
+.cart-form button {
+  width: 250px !important;
+}
+
+.messages {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 400px;
+  z-index: 50;
 }

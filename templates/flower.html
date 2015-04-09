@@ -2,26 +2,25 @@
 
 {% block body %}
   <h1 class="top">
-    {{ flower }}
     <small><a href="{% url 'collection' flower.collection.pk %}">{{ flower.collection.name }}</a></small>
+    <br/>
+    {{ flower }}
   </h1>
 
-  <!-- Map -->
   <div class="map flower" style="background-image: url('{{ flower.photo.url }}');">
     <div class="address price_tag">
       <div>
-        <h2>{{ flower.name }}</h2>
-        <p>{{ flower.description }}</p>
         <h3>
             {{ flower.price }}
             <small>руб</small>
         </h3>
-        <form class="form">
+        <form action="." method="POST">
           {% csrf_token %}
-          <button name="submit" type="submit">заказать</button>
+          <button name="submit" type="submit" value="1">заказать</button>
         </form>
       </div>
     </div>
   </div>
-  <!-- Map Ends! -->
+
+  <p class="flower-description">{{ flower.description }}</p>
 {% endblock body %}

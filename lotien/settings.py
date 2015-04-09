@@ -103,6 +103,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -146,4 +147,12 @@ if os.environ.get('DATABASE_URL'):
 
     MEDIA_URL = 'http://%s.s3.amazonaws.com/uploads/' % AWS_STORAGE_BUCKET_NAME
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.mandrillapp.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = os.environ['MANDRILL_USERNAME']
+    EMAIL_HOST_PASSWORD = os.environ['MANDRILL_APIKEY']
+    EMAIL_SUBJECT_PREFIX = u'[Lotien.ru]'
+    EMAIL_USE_TLS = True
 
