@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1gc4y%b=ak9@ev1l98269st_=2iotd(_itm-4r=ejc)^j-7*j_'
+SECRET_KEY = 'some_secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -121,7 +121,7 @@ THUMBNAIL_ALIASES = {
 
 if os.environ.get('DATABASE_URL'):
     # We're on Heroku, baby!
-    # DEBUG = False
+    DEBUG = False
 
     import dj_database_url
     DATABASES['default'] = dj_database_url.config()
@@ -157,4 +157,6 @@ if os.environ.get('DATABASE_URL'):
     EMAIL_USE_TLS = True
 
     DEFAULT_FROM_EMAIL = 'robot@lotien.ru'
+
+    SECRET_KEY = os.environ['SECRET_KEY']
 
