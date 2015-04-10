@@ -17,7 +17,7 @@ class HomeView(TemplateView):
         data.update(
             slider_photos=SliderImage.objects.all().order_by('?'),
             flowers=Flower.objects.all().order_by('?')[:3],
-            collections=Collection.objects.all().order_by('id'),
+            collections=Collection.objects.all().order_by('name'),
         )
         return data
 
