@@ -37,3 +37,9 @@ class Flower(models.Model):
             words = self.description.split()[:10]
         return ' '.join(words)
 
+    @property
+    def cover_height(self):
+        w, h = self.photo.width, self.photo.height
+        print w, h
+        return int(960.0 / w * h)
+
