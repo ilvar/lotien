@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from shop.models import Collection, Flower
+
+admin.site.register(Collection)
+admin.site.register(Flower)
