@@ -29,7 +29,7 @@ class CollectionView(ListView):
     context_object_name = 'flowers'
 
     def get_queryset(self):
-        return Flower.objects.filter(collection__pk=self.kwargs['pk'])
+        return Flower.objects.filter(collection__pk=self.kwargs['pk']).order_by('name')
 
     def get_context_data(self, **kwargs):
         data = super(CollectionView, self).get_context_data(**kwargs)

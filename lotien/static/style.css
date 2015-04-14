@@ -320,35 +320,10 @@ a {
     .menu ul.social a {
       display: block;
       padding: 0;
-      text-indent: -9999px;
+      font-size: 24px;
+      color: #8563B7;
       width: 34px;
-      height: 34px;
-      background-image: url(images_lavender/icons-sprite.png);
-      background-repeat: no-repeat; }
-      .menu ul.social a.google {
-        background-position: 0 0; }
-        .menu ul.social a.google:hover {
-          background-position: 0 -39px; }
-      .menu ul.social a.linkedin {
-        background-position: -40px 0; }
-        .menu ul.social a.linkedin:hover {
-          background-position: -40px -39px; }
-      .menu ul.social a.facebook {
-        background-position: -120px 0; }
-        .menu ul.social a.facebook:hover {
-          background-position: -120px -39px; }
-      .menu ul.social a.pinterest {
-        background-position: -160px 0; }
-        .menu ul.social a.pinterest:hover {
-          background-position: -160px -39px; }
-      .menu ul.social a.twitter {
-        background-position: -80px 0; }
-        .menu ul.social a.twitter:hover {
-          background-position: -80px -39px; }
-      .menu ul.social a.instagram {
-        background-position: -200px 0; }
-        .menu ul.social a.instagram:hover {
-          background-position: -200px -39px; }
+      height: 34px; }
 
 .page {
   padding-top: 61.5px; }
