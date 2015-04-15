@@ -919,3 +919,25 @@ a {
 .team-member img {
   width: 110px;
 }
+
+.content-block {
+  padding: 1em;
+}
+
+.content-block p {
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+.content-block ol li {
+  text-align: left;
+}
+
+.content-block ul li {
+  text-align: left;
+}
+
+.content-block h1 {
+  margin: 0 0 0.5em;
+}
+

@@ -38,10 +38,12 @@ INSTALLED_APPS = (
 
     'easy_thumbnails',
     'storages',
+    'sirtrevor',
 
     'lotien',
     'shop',
     'content',
+    'pages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,6 +120,8 @@ THUMBNAIL_ALIASES = {
         'thumb': {'size': (220, 220), 'crop': True}
     },
 }
+
+SIRTREVOR_ATTACHMENT_PROCESSOR = 'pages.utils.resize_attachment'
 
 if os.environ.get('DATABASE_URL'):
     # We're on Heroku, baby!

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1 class="top">{{ page.title }}</h1>
+  <div>
+    {{ page.content.html|safe }}
+  </div>
+{% endblock body %}

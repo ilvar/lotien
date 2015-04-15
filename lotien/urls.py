@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^cart/$', 'shop.views.cart', name='cart'),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^sirtrevor/', include('sirtrevor.urls')),
+
+    url(r'^', 'pages.views.page', name='page'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
