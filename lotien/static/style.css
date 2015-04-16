@@ -275,7 +275,7 @@ a {
   .menu .menu_container {
     margin: 0 auto;
     border-bottom: 1px solid #d5d5d5;
-    width: 80%;
+    width: 90%;
     position: relative; }
     @media all and (max-width: 960px) {
       .menu .menu_container {
@@ -886,11 +886,6 @@ a {
   padding: 1em 0.5em;
 }
 
-.cart {
-  margin: 0 auto 1em;
-  width: 96%
-}
-
 .cart tr td:first-child {
   width: 80%;
 }
@@ -941,3 +936,22 @@ a {
   margin: 0 0 0.5em;
 }
 
+.menu ul.social li {
+  margin-right: 0;
+}
+
+.menu ul.social li.cart-link {
+  margin-left: 25px;
+}
+
+.menu ul.social li.cart-link .badge {
+  position: relative;
+  font-family: Tahoma, Verdana, Geneva, sans-serif;
+  background-color: #C71585;
+  top: -25px;
+  left: 10px;
+}
+
+table.cart input {
+  width: 75px;
+}

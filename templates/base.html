@@ -57,7 +57,7 @@
 {% if messages %}
     <div class="messages">
         {% for m in messages %}
-            <div class="alert alert-{{ m.tags }}">{{ m }}</div>
+            <div class="alert alert-{{ m.tags }}">{{ m|safe }}</div>
         {% endfor %}
     </div>
 {% endif %}
@@ -96,6 +96,14 @@
                         <li>
                             <a href="https://vk.com/id185463142">
                                 <span class="icon-vkontakte-rect"></span>
+                            </a>
+                        </li>
+                        <li class="cart-link">
+                            <a href="/cart/" {% if not request.session.order %}class="text-muted"{% endif %}>
+                                <i class="fa fa-shopping-cart"></i>
+                                {% if request.session.order %}
+                                    <span class="badge">{{ request.session.order|length }}</span>
+                                {% endif %}
                             </a>
                         </li>
                     </ul>

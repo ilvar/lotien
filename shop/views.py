@@ -56,8 +56,12 @@ class FlowerView(DetailView):
             'pk': self.kwargs['pk'],
             'count': 1,
         })
+        self.request.session.save()
 
-        return redirect('/cart/')
+        messages.success(self.request, u'Товар добавлен в корзину. Если больше ничего не хотите '
+                                       u'<a href="/#collections">выбрать</a>, скорее, '
+                                       u'<a href="/cart/">оформите заказ!</a>')
+        return redirect('.')
 
 flower = FlowerView.as_view()
 
@@ -71,36 +75,48 @@ class CartView(TemplateView):
         for f in order:
             f['flower'] = Flower.objects.get(pk=f['pk'])
         data['order'] = order
-        data['total'] = sum([f['flower'].price for f in order], 0)
+        data['total'] = sum([f['flower'].price * f['count'] for f in order], 0)
         return data
 
     def post(self, *args, **kwargs):
-        msg = [u'Новый заказ:']
+        if self.request.POST.get('update'):
+            for f in self.request.session['order']:
+                key = 'count_%s' % f['pk']
+                value = self.request.POST.get(key)
+                if value:
+                    f['count'] = int(value)
 
-        msg.append(u'')
+            self.request.session.save()
+            messages.success(self.request, u'Ваш заказ успешно пересчитан')
+            return redirect('.')
 
-        order = self.request.session['order']
-        total = 0
-        for f in order:
-            flower = Flower.objects.get(pk=f['pk'])
-            total += flower.price
+        if self.request.POST.get('checkout'):
+            msg = [u'Новый заказ:', u'']
 
-            msg.append(u'%s: %s' % (flower.name, f['count']))
+            order = self.request.session['order']
+            total = 0
+            for item in order:
+                fl = Flower.objects.get(pk=item['pk'])
+                total += fl.price * item['count']
 
-        msg.append(u'')
+                msg.append(u'%s - %s: %s' % (fl.collection.name, fl.name, item['count']))
 
-        msg.append(u'Итого: %s' % total)
+            msg.append(u'')
 
-        msg.append(u'')
+            msg.append(u'Итого: %s' % total)
 
-        msg.append(u'Имя: %s' % self.request.POST['name'])
-        msg.append(u'Email: %s' % self.request.POST['email'])
-        msg.append(u'Телефон: %s' % self.request.POST['phone'])
+            msg.append(u'')
 
-        send_mail(u'Новый заказ', '\n'.join(msg), settings.DEFAULT_FROM_EMAIL, ['fuchsiairk@mail.ru'])
+            msg.append(u'Имя: %s' % self.request.POST['name'])
+            msg.append(u'Email: %s' % self.request.POST['email'])
+            msg.append(u'Телефон: %s' % self.request.POST['phone'])
 
-        del self.request.session['order']
-        messages.success(self.request, u'Ваш заказ отправлен, я скоро с Вами свяжусь')
-        return redirect('/')
+            send_mail(u'Новый заказ', '\n'.join(msg), settings.DEFAULT_FROM_EMAIL, ['fuchsiairk@mail.ru'])
+
+            del self.request.session['order']
+            messages.success(self.request, u'Ваш заказ отправлен, я скоро с Вами свяжусь')
+            return redirect('/')
+
+        return redirect('.')
 
 cart = CartView.as_view()
