@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ flower.name }} | {{ flower.collection.name }} | {{ block.super }}{% endblock title %}
+
 {% block body %}
   <h1 class="top">
     <small><a href="{% url 'collection' flower.collection.pk %}">{{ flower.collection.name }}</a></small>
