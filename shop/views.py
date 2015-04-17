@@ -104,7 +104,7 @@ class CartView(TemplateView):
                 fl = Flower.objects.get(pk=item['pk'])
                 total += fl.price * item['count']
 
-                msg.append(u'%s: %s (%s шт)' % (fl.name, item['count'], fl.price))
+                msg.append(u'%s: %s (%s шт)' % (fl.name, fl.price, item['count']))
 
             msg.append(u'')
 
