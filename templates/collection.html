@@ -10,6 +10,7 @@
     {% for f in flowers %}
       <!-- Product -->
       <div class="product">
+        <a name="flower_{{ f.pk }}"></a>
         <div>
           <img src="{{ f.photo.thumb.url }}" alt="{{ f.name }}">
           <a href="{% url 'flower' f.collection_id f.pk %}"></a>

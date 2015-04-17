@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView, DetailView
 
@@ -52,8 +53,10 @@ class FlowerView(DetailView):
         if 'order' not in self.request.session:
             self.request.session['order'] = []
 
+        fl = self.get_object()
+
         self.request.session['order'].append({
-            'pk': self.kwargs['pk'],
+            'pk': fl.pk,
             'count': 1,
         })
         self.request.session.save()
@@ -61,7 +64,9 @@ class FlowerView(DetailView):
         messages.success(self.request, u'Товар добавлен в корзину. Если больше ничего не хотите '
                                        u'<a href="/#collections">выбрать</a>, можете '
                                        u'<a href="/cart/">оформить заказ.</a>')
-        return redirect('.')
+
+        url = reverse('collection', args=[fl.collection.pk])
+        return redirect(url + '#flower_%s' % fl.pk)
 
 flower = FlowerView.as_view()
 
