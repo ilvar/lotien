@@ -59,8 +59,8 @@ class FlowerView(DetailView):
         self.request.session.save()
 
         messages.success(self.request, u'Товар добавлен в корзину. Если больше ничего не хотите '
-                                       u'<a href="/#collections">выбрать</a>, скорее, '
-                                       u'<a href="/cart/">оформите заказ!</a>')
+                                       u'<a href="/#collections">выбрать</a>, можете '
+                                       u'<a href="/cart/">оформить заказ.</a>')
         return redirect('.')
 
 flower = FlowerView.as_view()
