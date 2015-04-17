@@ -110,8 +110,10 @@ class CartView(TemplateView):
             msg.append(u'Имя: %s' % self.request.POST['name'])
             msg.append(u'Email: %s' % self.request.POST['email'])
             msg.append(u'Телефон: %s' % self.request.POST['phone'])
+            msg.append(u'Адрес:\n %s' % self.request.POST['address'])
 
-            send_mail(u'Новый заказ', '\n'.join(msg), settings.DEFAULT_FROM_EMAIL, ['fuchsiairk@mail.ru'])
+            emails = ['fuchsiairk@mail.ru', 'info@lotien.ru']
+            send_mail(u'Новый заказ', '\n'.join(msg), settings.DEFAULT_FROM_EMAIL, emails)
 
             del self.request.session['order']
             messages.success(self.request, u'Ваш заказ отправлен, я скоро с Вами свяжусь')

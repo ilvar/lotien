@@ -35,15 +35,20 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="idName">Ваше имя</label>
-            <input type="text" class="form-control" id="idName" name="name" placeholder="ваше имя" required="1">
+            <input type="text" class="form-control" id="idName" name="name" placeholder="ваше имя" required="required">
         </div>
         <div class="form-group">
             <label for="idEmail">Ваш email</label>
-            <input type="email" class="form-control" id="idEmail" name="email" placeholder="ваш email" required="1">
+            <input type="email" class="form-control" id="idEmail" name="email" placeholder="ваш email" required="required">
         </div>
         <div class="form-group">
             <label for="idPhone">Ваш телефон</label>
-            <input type="tel" class="form-control" id="idPhone" name="phone" placeholder="ваш телефон" required="1">
+            <input type="tel" class="form-control" id="idPhone" name="phone" placeholder="ваш телефон" required="required">
+        </div>
+        <div class="form-group">
+            <label for="idAddress">Адрес и доп.информация</label>
+            <textarea class="form-control" id="idAddress" name="address" placeholder="ваш адрес" required="required">
+            </textarea>
         </div>
         <button name="checkout" type="submit" value="1">отправить заказ</button>
     </form>

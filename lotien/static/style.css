@@ -892,7 +892,7 @@ a {
 
 .contact h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .cart-form {
@@ -954,4 +954,9 @@ a {
 
 table.cart input {
   width: 75px;
+}
+
+.contact h4 {
+  text-align: center;
+  margin-bottom: 1em;
 }
