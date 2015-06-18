@@ -1,55 +1,59 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1 class="top">Ваш заказ</h1>
-    <form class="cart-form" action="" method="POST">
-        {% csrf_token %}
-        <table class="table table-striped table-bordered cart">
-            <tr>
-                <th>Цветок</th>
-                <th>Кол-во</th>
-                <th>Цена</th>
-            </tr>
-            {% for f in order %}
+    {% if order %}
+        <h1 class="top">Ваш заказ</h1>
+        <form class="cart-form" action="" method="POST">
+            {% csrf_token %}
+            <table class="table table-striped table-bordered cart">
                 <tr>
-                    <td>
-                        <a href="{% url 'flower' f.flower.collection_id f.flower.pk %}">{{ f.flower }}</a>
-                        ({{ f.flower.collection.name }})
-                    </td>
-                    <td><input type="number" value="{{ f.count }}" name="count_{{ f.pk }}"/></td>
-                    <td>{{ f.flower.price }}</td>
+                    <th>Цветок</th>
+                    <th>Кол-во</th>
+                    <th>Цена</th>
                 </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="2">Итого</td>
-                <td>{{ total }}</td>
-            </tr>
-        </table>
-        <button name="update" type="submit" value="1">пересчитать</button>
-        <hr/>
-    </form>
+                {% for f in order %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'flower' f.flower.collection_id f.flower.pk %}">{{ f.flower }}</a>
+                            ({{ f.flower.collection.name }})
+                        </td>
+                        <td><input type="number" value="{{ f.count }}" name="count_{{ f.pk }}"/></td>
+                        <td>{{ f.flower.price }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2">Итого</td>
+                    <td>{{ total }}</td>
+                </tr>
+            </table>
+            <button name="update" type="submit" value="1">пересчитать</button>
+            <hr/>
+        </form>
 
-    <form class="cart-form" action="" method="POST">
-        <h2>Оформление заказа</h2>
+        <form class="cart-form" action="" method="POST">
+            <h2>Оформление заказа</h2>
 
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="idName">Ваше имя</label>
-            <input type="text" class="form-control" id="idName" name="name" placeholder="ваше имя" required="required">
-        </div>
-        <div class="form-group">
-            <label for="idEmail">Ваш email</label>
-            <input type="email" class="form-control" id="idEmail" name="email" placeholder="ваш email" required="required">
-        </div>
-        <div class="form-group">
-            <label for="idPhone">Ваш телефон</label>
-            <input type="tel" class="form-control" id="idPhone" name="phone" placeholder="ваш телефон" required="required">
-        </div>
-        <div class="form-group">
-            <label for="idAddress">Адрес и доп.информация</label>
-            <textarea class="form-control" id="idAddress" name="address" placeholder="ваш адрес" required="required">
-            </textarea>
-        </div>
-        <button name="checkout" type="submit" value="1">отправить заказ</button>
-    </form>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="idName">Ваше имя</label>
+                <input type="text" class="form-control" id="idName" name="name" placeholder="ваше имя" required="required">
+            </div>
+            <div class="form-group">
+                <label for="idEmail">Ваш email</label>
+                <input type="email" class="form-control" id="idEmail" name="email" placeholder="ваш email" required="required">
+            </div>
+            <div class="form-group">
+                <label for="idPhone">Ваш телефон</label>
+                <input type="tel" class="form-control" id="idPhone" name="phone" placeholder="ваш телефон" required="required">
+            </div>
+            <div class="form-group">
+                <label for="idAddress">Адрес и доп.информация</label>
+                <textarea class="form-control" id="idAddress" name="address" placeholder="ваш адрес" required="required">
+                </textarea>
+            </div>
+            <button name="checkout" type="submit" value="1">отправить заказ</button>
+        </form>
+    {% else %}
+        <h1 class="top">Вы ещё ничего не выбрали, Ваша корзина пуста</h1>
+    {% endif %}
 {% endblock body %}

@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^collection/(?P<pk>\d+)/$', 'shop.views.collection', name='collection'),
     url(r'^collection/(?P<collection_pk>\d+)/(?P<pk>\d+)/$', 'shop.views.flower', name='flower'),
     url(r'^cart/$', 'shop.views.cart', name='cart'),
+    url(r'^contact/$', 'shop.views.contact', name='contact'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sirtrevor/', include('sirtrevor.urls')),

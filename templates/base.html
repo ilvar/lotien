@@ -20,7 +20,6 @@
     <script src="{{ STATIC_URL }}scripts/flexslider/jquery.flexslider-min.js"></script>
     <script src="{{ STATIC_URL }}scripts/imagelightbox.min.js"></script>
     <script src="{{ STATIC_URL }}scripts/functions.js"></script>
-    <script src="{{ STATIC_URL }}scripts/form.js"></script>
     <script src="{{ STATIC_URL }}scripts/scroll.js"></script>
 
     <!-- Google Map -->
@@ -133,10 +132,12 @@
                 </h4>
                 <!-- Contact Form -->
                 <div class="form">
-                    <form action="contact.php" method="post">
-                        <input type="text" name="name" placeholder="ваше имя"/>
-                        <input type="text" name="email" placeholder="ваш email"/>
-                        <textarea name="message" placeholder="ваш вопрос"></textarea>
+                    <form action="{% url 'contact' %}" method="post">
+                        {% csrf_token %}
+
+                        <input type="text" name="name" placeholder="ваше имя" required/>
+                        <input type="text" name="email" placeholder="ваш email" required/>
+                        <textarea name="message" placeholder="ваш вопрос" required></textarea>
 
                         <button name="submit" type="submit">отправить</button>
                     </form>
@@ -183,7 +184,6 @@
             if ($body_height) {
                 VK.callMethod('resizeWindow', 607, $body_height);
             }
-            ;
         });
     </script>
 

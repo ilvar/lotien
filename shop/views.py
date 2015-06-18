@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, View
 
 from content.models import SliderImage
 from shop.models import Flower, Collection
@@ -76,7 +76,7 @@ class CartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super(CartView, self).get_context_data(**kwargs)
-        order = self.request.session['order']
+        order = self.request.session.get('order', [])
         for f in order:
             f['flower'] = Flower.objects.get(pk=f['pk'])
         data['order'] = order
@@ -118,7 +118,7 @@ class CartView(TemplateView):
             msg.append(u'Адрес:\n %s' % self.request.POST['address'])
 
             emails = ['fuchsiairk@mail.ru', 'info@lotien.ru']
-            send_mail(u'Новый заказ', '\n'.join(msg), settings.DEFAULT_FROM_EMAIL, emails)
+            send_mail(u'Новый заказ', u'\n'.join(msg), settings.DEFAULT_FROM_EMAIL, emails)
 
             del self.request.session['order']
             messages.success(self.request, u'Ваш заказ отправлен, я скоро с Вами свяжусь')
@@ -127,3 +127,23 @@ class CartView(TemplateView):
         return redirect('.')
 
 cart = CartView.as_view()
+
+
+class ContactView(View):
+    def get(self, **kwargs):
+        return redirect('/')
+
+    def post(self, *args, **kwargs):
+        emails = ['fuchsiairk@mail.ru', 'info@lotien.ru']
+        msg = [
+            u'Имя: %s' % self.request.POST['name'],
+            u'Email: %s' % self.request.POST['email'],
+            u'',
+            self.request.POST['message'],
+        ]
+        send_mail(u'Новое сообщение', u'\n'.join(msg), settings.DEFAULT_FROM_EMAIL, emails)
+
+        messages.success(self.request, u'Ваше сообщение отправлено, я скоро с Вами свяжусь')
+        return redirect('/')
+
+contact = ContactView.as_view()
