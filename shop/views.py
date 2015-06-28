@@ -84,15 +84,23 @@ class CartView(TemplateView):
         return data
 
     def post(self, *args, **kwargs):
+        delete_id = self.request.POST.get('delete')
+        if delete_id:
+            self.request.session['order'] = [f for f in self.request.session['order'] if str(f['pk']) != str(delete_id)]
+            self.request.session.save()
+            messages.success(self.request, u'Ваш заказ пересчитан')
+            return redirect('.')
+
         if self.request.POST.get('update'):
             for f in self.request.session['order']:
                 key = 'count_%s' % f['pk']
                 value = self.request.POST.get(key)
-                if value:
+                if value is not None:
                     f['count'] = int(value)
 
+            self.request.session['order'] = [f for f in self.request.session['order'] if str(f['count']) != '0']
             self.request.session.save()
-            messages.success(self.request, u'Ваш заказ успешно пересчитан')
+            messages.success(self.request, u'Ваш заказ пересчитан')
             return redirect('.')
 
         if self.request.POST.get('checkout'):

@@ -10,20 +10,29 @@
                     <th>Цветок</th>
                     <th>Кол-во</th>
                     <th>Цена</th>
+                    <th></th>
                 </tr>
                 {% for f in order %}
                     <tr>
                         <td>
                             <a href="{% url 'flower' f.flower.collection_id f.flower.pk %}">{{ f.flower }}</a>
-                            ({{ f.flower.collection.name }})
+                            &mdash; {{ f.flower.collection.name }}
                         </td>
                         <td><input type="number" value="{{ f.count }}" name="count_{{ f.pk }}"/></td>
                         <td>{{ f.flower.price }}</td>
+                        <td>
+                            <form action="." method="POST">
+                                <button type="submit" class="btn btn-sm btn-danger" name="delete" value="{{ f.flower.pk }}">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
                 <tr>
                     <td colspan="2">Итого</td>
                     <td>{{ total }}</td>
+                    <td></td>
                 </tr>
             </table>
             <button name="update" type="submit" value="1">пересчитать</button>
