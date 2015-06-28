@@ -106,6 +106,7 @@ class CartView(TemplateView):
         if self.request.POST.get('checkout'):
             msg = [u'Новый заказ:', u'']
 
+            self.request.session['order'] = [f for f in self.request.session['order'] if str(f['count']) != '0']
             order = self.request.session['order']
             total = 0
             for item in order:
