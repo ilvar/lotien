@@ -21,11 +21,9 @@
                         <td><input type="number" value="{{ f.count }}" name="count_{{ f.pk }}"/></td>
                         <td>{{ f.flower.price }}</td>
                         <td>
-                            <form action="." method="POST">
-                                <button type="submit" class="btn btn-sm btn-danger" name="delete" value="{{ f.flower.pk }}">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>
-                            </form>
+                            <button type="submit" class="btn btn-sm btn-danger" name="delete" value="{{ f.flower.pk }}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 {% endfor %}
