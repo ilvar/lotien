@@ -17,6 +17,7 @@ class SliderImage(models.Model):
                                   resize_source=dict(size=(960, 445), crop="smart", upscale=True),
                                   thumbnail_storage=thumbnail_storage)
     image_url = models.CharField(u'URL фото', max_length=255)
+    title = models.CharField(u'Подпись', max_length=255, null=True)
 
     class Meta:
         verbose_name = u'Фото для слайдера'
