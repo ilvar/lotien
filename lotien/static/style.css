@@ -979,3 +979,8 @@ table.cart input {
 .hidden {
     display: none;
 }
+
+#id_captcha_1 {
+    background-image: none;
+    padding-left: 20px;
+}
