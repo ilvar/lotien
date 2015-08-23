@@ -981,6 +981,6 @@ table.cart input {
 }
 
 #id_captcha_1 {
-    background-image: none;
-    padding-left: 20px;
+    background-image: none !important;
+    padding-left: 20px !important;
 }
