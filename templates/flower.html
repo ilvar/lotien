@@ -2,6 +2,11 @@
 
 {% block title %}{{ flower.name }} | {{ flower.collection.name }} | {{ block.super }}{% endblock title %}
 
+{% block head %}
+    <meta property="og:title" content="{{ flower.name }} | {{ flower.collection.name }}" />
+    <meta property="og:image" content="http://lotien.ru{{ flower.photo.url }}" />
+{% endblock %}
+
 {% block body %}
   <h1 class="top">
     <small><a href="{% url 'collection' flower.collection.pk %}">{{ flower.collection.name }}</a></small>
