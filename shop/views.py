@@ -8,6 +8,7 @@ from django.views.generic import TemplateView, ListView, DetailView, View
 
 from content.models import SliderImage
 from shop.models import Flower, Collection
+from utils.forms import CaptchaForm
 
 
 class HomeView(TemplateView):
@@ -143,7 +144,7 @@ class ContactView(View):
         return redirect('/')
 
     def post(self, *args, **kwargs):
-        cf = CaptchaForm(data=request.POST)
+        cf = CaptchaForm(data=self.request.POST)
         if not cf.is_valid():
             messages.error(self.request, 'You are a robot?!')
             return redirect('/')
