@@ -144,11 +144,6 @@ class ContactView(View):
         return redirect('/')
 
     def post(self, *args, **kwargs):
-        cf = CaptchaForm(data=self.request.POST)
-        if not cf.is_valid():
-            messages.error(self.request, 'You are a robot?!')
-            return redirect('/')
-
         emails = ['fuchsiairk@mail.ru', 'info@lotien.ru']
         msg = [
             u'Имя: %s' % self.request.POST['name'],
