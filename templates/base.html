@@ -143,6 +143,8 @@
                         <input type="text" name="email" placeholder="ваш email" required/>
                         <textarea name="message" placeholder="ваш вопрос" required></textarea>
 
+                        {{ captcha_form.captcha }}
+
                         <button name="submit" type="submit">отправить</button>
                     </form>
                 </div>

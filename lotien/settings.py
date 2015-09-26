@@ -127,6 +127,9 @@ THUMBNAIL_ALIASES = {
 SIRTREVOR_ATTACHMENT_PROCESSOR = 'pages.utils.resize_attachment'
 
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+CAPTCHA_NOISE_FUNCTIONS = []
+CAPTCHA_LETTER_ROTATION = (-15, 15)
+
 
 if os.environ.get('DATABASE_URL'):
     # We're on Heroku, baby!
