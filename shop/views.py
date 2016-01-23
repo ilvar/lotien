@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView, DetailView, View
 
 from content.models import SliderImage
+from pages.models import Page
 from shop.models import Flower, Collection
 from utils.forms import CaptchaForm
 
@@ -20,6 +21,7 @@ class HomeView(TemplateView):
             slider_photos=SliderImage.objects.all().order_by('?'),
             flowers=Flower.objects.all().order_by('?')[:3],
             collections=Collection.objects.all().order_by('name'),
+            pages=Page.objects.filter(show_on_main=True).order_by('-pk'),
         )
         return data
 
