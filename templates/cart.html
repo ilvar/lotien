@@ -63,4 +63,11 @@
     {% else %}
         <h1 class="top">Вы ещё ничего не выбрали, Ваша корзина пуста</h1>
     {% endif %}
+
+    <script>
+        window.yaCounter36005045.reachGoal('cart');
+        $('button[type=submit]').click(function() {
+            window.yaCounter36005045.reachGoal('order');
+        });
+    </script>
 {% endblock body %}
