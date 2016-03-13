@@ -7,6 +7,7 @@ from utils import thumbnail_storage
 
 class Collection(models.Model):
     name = models.CharField(u'Название', max_length=255)
+    not_available = models.TextField(u'Нет в наличии (сообщение)', default='')
 
     class Meta:
         verbose_name = u'Коллекция'

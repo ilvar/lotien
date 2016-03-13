@@ -5,6 +5,12 @@
 {% block body %}
   <h1 class="top">{{ collection.name }}</h1>
 
+  {% if collection.not_available %}
+    <div class="alert alert-danger" role="alert">
+      Очень жаль, но вся коллекция распродана. {{ collection.not_available }}
+    </div>
+  {% endif %}
+
   <!-- Featured Products -->
   <div class="products">
     {% for f in flowers %}

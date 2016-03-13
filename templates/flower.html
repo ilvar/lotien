@@ -30,5 +30,12 @@
     </div>
   </div>
 
-  <p class="flower-description">{{ flower.description }}</p>
+  <div class="flower-description">
+    {% if flower.collection.not_available %}
+      <div class="alert alert-danger" role="alert">
+        Очень жаль, но вся коллекция распродана. {{ flower.collection.not_available }}
+      </div>
+    {% endif %}
+    {{ flower.description }}
+  </div>
 {% endblock body %}
