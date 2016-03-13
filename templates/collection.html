@@ -7,7 +7,7 @@
 
   {% if collection.not_available %}
     <div class="alert alert-danger" role="alert">
-      Очень жаль, но вся коллекция распродана. {{ collection.not_available }}
+      Очень жаль, но вся коллекция распродана. {{ collection.not_available|safe }}
     </div>
   {% endif %}
 
