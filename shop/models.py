@@ -13,6 +13,9 @@ class Collection(models.Model):
         verbose_name = u'Коллекция'
         verbose_name_plural = u'Коллекции'
 
+    def __unicode__(self):
+        return self.name
+
 
 class Flower(models.Model):
     collection = models.ForeignKey(Collection)
