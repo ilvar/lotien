@@ -3,6 +3,7 @@ Pillow==2.8.1
 dj-database-url==0.3.0
 dj-static==0.0.6
 django-markdown
+django-markdown-deux
 django-simple-captcha
 django-sirtrevor
 django-toolbelt==0.0.1

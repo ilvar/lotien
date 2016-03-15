@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'sirtrevor',
     'captcha',
     'django_markdown',
+    'markdown_deux',
 
     'lotien',
     'shop',

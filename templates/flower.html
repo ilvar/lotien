@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load markdown_deux_tags %}
+
 {% block title %}{{ flower.name }} | {{ flower.collection.name }} | {{ block.super }}{% endblock title %}
 
 {% block head %}
@@ -36,6 +38,6 @@
         {{ flower.collection.not_available|safe }}
       </div>
     {% endif %}
-    {{ flower.description }}
+    {{ flower.description|markdown }}
   </div>
 {% endblock body %}

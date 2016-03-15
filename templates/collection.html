@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load markdown_deux_tags %}
+
 {% block title %}{{ collection.name }} | {{ block.super }}{% endblock title %}
 
 {% block body %}
@@ -22,7 +24,7 @@
           <a href="{% url 'flower' f.collection_id f.pk %}"></a>
         </div>
         <h3>{{ f.name }}</h3>
-        <p>{{ f.description }}</p>
+        <p>{{ f.description|markdown|striptags }}</p>
       </div>
       <!-- Product Ends! -->
 
