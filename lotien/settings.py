@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'storages',
     'sirtrevor',
     'captcha',
+    'django_markdown',
 
     'lotien',
     'shop',

@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.db import models
+from django_markdown.models import MarkdownField
 
 from easy_thumbnails.fields import ThumbnailerImageField
 from utils import thumbnail_storage
@@ -20,7 +21,7 @@ class Collection(models.Model):
 class Flower(models.Model):
     collection = models.ForeignKey(Collection)
     name = models.CharField(u'Название', max_length=255)
-    description = models.TextField(u'Описание')
+    description = MarkdownField(u'Описание')
     price = models.PositiveIntegerField(u'Цена')
     baby = models.BooleanField(u'Детка', blank=True, default=False)
     photo = ThumbnailerImageField(u'Фото', thumbnail_storage=thumbnail_storage)
