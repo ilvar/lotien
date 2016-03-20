@@ -28,6 +28,8 @@
                 </div><!-- /.blog-post -->
             </div>
         </div>
+    {% empty %}
+        <h2>Пока тут пусто, зайдите попозже</h2>
     {% endfor %}
 
     {% include "andablog/pagination_snippet.html" with page_obj=page_obj %}
