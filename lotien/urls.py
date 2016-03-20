@@ -9,11 +9,13 @@ urlpatterns = patterns('',
     url(r'^collection/(?P<collection_pk>\d+)/(?P<pk>\d+)/$', 'shop.views.flower', name='flower'),
     url(r'^cart/$', 'shop.views.cart', name='cart'),
     url(r'^contact/$', 'shop.views.contact', name='contact'),
+    url(r'^blog/', include('andablog.urls', namespace='andablog')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sirtrevor/', include('sirtrevor.urls')),
     url(r'^captcha/', include('captcha.urls')),
-    url('^markdown/', include('django_markdown.urls')),
+    url(r'^markdown/', include('django_markdown.urls')),
+    url(r'^markitup/', include('markitup.urls')),
 
     url(r'^', 'pages.views.page', name='page'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -43,6 +43,10 @@ INSTALLED_APPS = (
     'django_markdown',
     'markdown_deux',
 
+    'andablog',
+    'markitup',  # For entry content
+    'taggit',
+
     'lotien',
     'shop',
     'content',
@@ -85,6 +89,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lotien.wsgi.application'
 
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
+MARKITUP_SET = 'markitup/sets/markdown/'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -100,9 +106,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

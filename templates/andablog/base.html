@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{% block andablog_page_title %}{% endblock %} | {{ block.super }}{% endblock %}
+
+{% block head %}
+    {% block andablog_head_extra %}
+        <link rel="stylesheet" href="{% static 'css/andablog.css' %}">
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="top"></h1>
+    {% block andablog_content %}
+    {% endblock %}
+{% endblock %}
