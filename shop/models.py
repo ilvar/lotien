@@ -48,3 +48,10 @@ class Flower(models.Model):
         print w, h
         return int(960.0 / w * h)
 
+import andablog.models
+import pytils.translit
+
+def update_slug(instance, **kwargs):
+    andablog.models.Entry.objects.filter(pk=instance.pk).update(slug=pytils.translit.slugify(instance.title))
+
+models.signals.post_save.connect(update_slug, sender=andablog.models.Entry)
