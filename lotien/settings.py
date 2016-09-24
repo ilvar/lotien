@@ -24,6 +24,7 @@ SECRET_KEY = '1gc4y%b=ak9@ev1l98269st_=2iotd(_itm-4r=ejc)^j-7*j_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', '') == 'TRUE'
+DEBUG = True
 
 
 # Application definition
