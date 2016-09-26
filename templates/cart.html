@@ -17,11 +17,11 @@
                         <td>
                             <a href="{% url 'flower' f.flower.collection_id f.flower.pk %}">{{ f.flower }}</a>
                             &mdash; {{ f.flower.collection.name }}
-                            {% if f.flower.collection.not_available %}
+                            <!-- {% if f.flower.collection.not_available %}
                                 <div class="alert alert-danger" role="alert">
                                     {{ f.flower.collection.not_available|safe }}
                                 </div>
-                            {% endif %}
+                            {% endif %} -->
                         </td>
                         <td><input type="number" value="{{ f.count }}" name="count_{{ f.pk }}"/></td>
                         <td>{{ f.flower.price }}</td>
