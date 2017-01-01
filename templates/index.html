@@ -2,6 +2,7 @@
 
 {% block body %}
   <!-- Slider -->
+  <!--
   <div class="promo">
 
     <div class="flexslider">
@@ -18,13 +19,17 @@
   <!-- Abstract -->
   <div class="abstract">
     <p>
+      Магазин закрыт, по всем вопросам обращайтесь на <a href="fuchsiairk@mail.ru">fuchsiairk@mail.ru</a>
+        <!--
         Мы не только коллекционируем редкие сортовые комнатные цветы, но и выращиваем качественный посадочный
         материал, который умеем надёжно упаковывать и отправлять по всей России.
+        -->
     </p>
   </div>
   <!-- Abstract Ends! -->
 
   <!-- Services -->
+  <!--
   <div class="services">
     <div class="service">
       <h3><a href="/dostavka-i-garantii/">Гарантия</a></h3>
@@ -59,12 +64,14 @@
   <!-- Services Ends! -->
 
   <!-- Featured Products -->
+  <!--
   <div class="products">
 
     <h2>Наши цветы</h2>
 
     {% for f in flowers %}
       <!-- Product -->
+      <!--
       <div class="product">
         <div>
           <img src="{{ f.photo.thumb.url }}" alt="{{ f.name }}">
@@ -76,16 +83,19 @@
       <!-- Product Ends! -->
     {% endfor %}
 
+    <!--
   </div>
   <!-- Featured Products Ends! -->
 
   <!-- Portfolio -->
+  <!--
   <div class="portfolio">
     <a class="anchor" name="collections"></a>
     <h2>Коллекции</h2>
 
     {% for c in collections %}
       <!-- Portfolio List -->
+      <!--
       <div class="item">
         <a href="{% url 'collection' c.pk %}"><span>{{ c.name }}</span></a>
       </div>
